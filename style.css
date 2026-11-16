@@ -292,3 +292,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .other:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
 .other .icon{width:36px;height:36px;border-radius:10px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;flex:none}
 .other svg:last-child{margin-left:auto;color:var(--brand)}
+
+.formules{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.2rem}
+.formules a{display:flex;flex-direction:column;gap:.2rem;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:14px;padding:.9rem 1rem;text-decoration:none;color:var(--brand)}
+.formules a:hover{border-color:var(--brand-2);border-left-color:var(--accent)}
+.formules b{font-size:1rem}
+.formules span{font-size:.9rem;color:var(--muted)}
+@media(max-width:700px){.formules{grid-template-columns:1fr}}
