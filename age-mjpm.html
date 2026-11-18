@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quel est ton âge en années MJPM ? Le test | Facilitelle</title>
+<link rel="canonical" href="https://facilitelle.fr/age-mjpm">
+<script>if(/\.html$/.test(location.pathname))history.replaceState(null,'',location.pathname.replace(/(index)?\.html$/,'')+location.search+location.hash)</script>
+<meta name="description" content="1 an de MJPM = 7 ans de vie, comme les chats. Réponds à 6 questions et découvre ton âge en années MJPM. Test gratuit et 100 % humour.">
+<meta property="og:title" content="Quel est ton âge en années MJPM ?">
+<meta property="og:description" content="1 an de MJPM = 7 ans de vie, comme les chats. Réponds à 6 questions et découvre ton âge en années MJPM. Test gratuit et 100 % humour.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Facilitelle">
+<meta property="og:url" content="https://facilitelle.fr/age-mjpm">
+<meta property="og:image" content="https://facilitelle.fr/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo Facilitelle">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://facilitelle.fr/og-image.jpg">
+<meta name="author" content="Julien Meddah">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#222f55">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.quiz{max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:2rem;box-shadow:var(--shadow)}
+.quiz .progress{height:8px;background:var(--brand-soft);border-radius:99px;overflow:hidden;margin-bottom:1.5rem}
+.quiz .progress span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.quiz .step-q{display:none}.quiz .step-q.active{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.quiz h2{font-size:1.4rem;margin-bottom:1.2rem}
+.quiz .count{font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:.4rem}
+.choices{display:grid;gap:.7rem}
+.choice{display:block;text-align:left;width:100%;padding:1rem 1.2rem;border:2px solid var(--line);border-radius:14px;background:#fff;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;transition:.15s}
+.choice:hover{border-color:var(--brand-2);background:var(--brand-soft)}
+.quiz input[type=number],.quiz input[type=email]{width:100%;padding:.9rem 1rem;border:2px solid var(--line);border-radius:12px;font:inherit;font-size:1.1rem}
+.quiz .consent{display:flex;gap:.6rem;align-items:flex-start;font-size:.9rem;color:var(--muted);margin:1rem 0}
+.quiz .consent input{margin-top:.3rem}
+.quiz .small{font-size:.8rem;color:var(--muted)}
+.result{text-align:center}
+.result .age{font-family:"Roboto Slab",serif;font-size:clamp(3.5rem,12vw,5.5rem);font-weight:700;color:var(--brand);line-height:1}
+.result .titre{font-size:1.3rem;font-weight:800;color:var(--brand);margin:1rem 0 .3rem}
+.share{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.4rem 0}
+.share a{color:#fff;text-decoration:none;font-weight:700;padding:.7rem 1.1rem;border-radius:12px}
+.back{background:none;border:none;color:var(--muted);font:inherit;cursor:pointer;margin-top:1rem;text-decoration:underline}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Navigation principale">
+    <a class="logo" href="/" aria-label="Facilitelle, accueil"><img src="logo-mark-sm.png" alt="" width="30" height="42">FACILITELLE</a>
+    <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Accueil</a></li><li><a href="/permanence-telephonique">Permanence téléphonique</a></li><li><a href="/carte-de-paiement">Carte de paiement</a></li><li><a href="/petits-travaux">Petits travaux</a></li>
+      <li><a class="btn btn-primary" href="/contact">Nous contacter</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="contenu">
+<section class="page-hero" style="padding-bottom:1rem">
+  <div class="container reveal">
+    <span class="eyebrow">Le test 100 % humour</span>
+    <h1>Quel est ton âge en années MJPM ?</h1>
+    <p class="lead">Chez les MJPM, c'est comme chez les chats : 1 an de métier = 7 ans de vie. Réponds à 6 questions et découvre ton vrai âge.</p>
+  </div>
+</section>
+<section style="padding-top:1.5rem">
+  <div class="container">
+    <form class="quiz" id="quiz" novalidate>
+      <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+
+      <div class="step-q active" data-name="genre">
+        <div class="count">Question 1 sur 6</div>
+        <h2>Tu es…</h2>
+        <div class="choices">
+          <button type="button" class="choice" data-v="F">Une femme</button>
+          <button type="button" class="choice" data-v="H">Un homme</button>
+          <button type="button" class="choice" data-v="N">Je préfère ne pas le dire</button>
+        </div>
+      </div>
+
+      <div class="step-q" data-name="annees">
+        <div class="count">Question 2 sur 6</div>
+        <h2>Depuis combien d'années es-tu MJPM ?</h2>
+        <input type="number" id="annees" min="1" max="60" inputmode="numeric" placeholder="Ex. : 8">
+        <p class="small">Moins d'un an ? Mets 1, ça compte déjà.</p>
+        <button type="button" class="btn btn-primary" id="next-annees">Suivant</button>
+      </div>
+
+      <div class="step-q" data-name="crg">
+        <div class="count">Question 3 sur 6</div>
+        <h2>Cette année, combien de semaines de retard sur tes CRG ?</h2>
+        <div class="choices">
+          <button type="button" class="choice" data-v="0">0, je suis à jour</button>
+          <button type="button" class="choice" data-v="1">1 à 2 semaines</button>
+          <button type="button" class="choice" data-v="2">3 à 6 semaines</button>
+          <button type="button" class="choice" data-v="3">« Il y a une date limite ? »</button>
+        </div>
+      </div>
+
+      <div class="step-q" data-name="carte">
+        <div class="count">Question 4 sur 6</div>
+        <h2>Le mois dernier, combien de majeurs t'ont appelé pour une carte bloquée ?</h2>
+        <div class="choices">
+          <button type="button" class="choice" data-v="0">Aucun</button>
+          <button type="button" class="choice" data-v="1">1 à 3</button>
+          <button type="button" class="choice" data-v="2">4 à 10</button>
+          <button type="button" class="choice" data-v="3">« Je ne compte plus »</button>
+        </div>
+      </div>
+
+      <div class="step-q" data-name="vocaux">
+        <div class="count">Question 5 sur 6</div>
+        <h2>En rentrant de congés, combien de messages vocaux ?</h2>
+        <div class="choices">
+          <button type="button" class="choice" data-v="0">Moins de 10</button>
+          <button type="button" class="choice" data-v="1">10 à 30</button>
+          <button type="button" class="choice" data-v="2">« Ma messagerie est pleine »</button>
+        </div>
+      </div>
+
+      <div class="step-q" data-name="mails">
+        <div class="count">Question 6 sur 6</div>
+        <h2>Si tu ouvres ta boîte mail maintenant, combien de mails non lus ?</h2>
+        <div class="choices">
+          <button type="button" class="choice" data-v="0">Zéro, je suis une machine</button>
+          <button type="button" class="choice" data-v="1">Moins de 50</button>
+          <button type="button" class="choice" data-v="2">50 à 200</button>
+          <button type="button" class="choice" data-v="3">« Le compteur affiche 999+ »</button>
+        </div>
+      </div>
+
+      <div class="step-q" data-name="email">
+        <h2>Ton résultat est prêt !</h2>
+        <p>Indique ton email pour recevoir ton âge MJPM et ton « certificat ».</p>
+        <label for="email" class="small">Email</label>
+        <input type="email" id="email" required autocomplete="email" placeholder="prenom@exemple.fr">
+        <input type="text" id="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <label class="consent"><input type="checkbox" id="newsletter"> <span>J'accepte de recevoir la newsletter Facilitelle. Elle est rare, promis : quelques mails par an, pas plus. Désinscription en un clic à tout moment.</span></label>
+        <p class="small">Ton email sert à t'envoyer ton résultat. Il n'est jamais revendu. <a href="/mentions-legales">Mentions légales</a>.</p>
+        <button type="submit" class="btn btn-accent">Découvrir mon âge MJPM</button>
+        <div id="msg" class="small" role="status" style="margin-top:.8rem"></div>
+      </div>
+
+      <div class="step-q result" data-name="result">
+        <div class="small">Ton âge en années MJPM</div>
+        <div class="age" id="r-age"></div>
+        <div class="titre" id="r-titre"></div>
+        <p id="r-texte"></p>
+        <p class="small">Ton résultat t'attend aussi dans ta boîte mail (pense à regarder les spams).</p>
+        <div style="font-weight:700;margin-top:1.4rem">Défie tes collègues</div>
+        <div class="share">
+          <a id="s-li" style="background:#0a66c2" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="s-fb" style="background:#1877f2" target="_blank" rel="noopener">Facebook</a>
+          <a id="s-wa" style="background:#25d366" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <p>Pour rajeunir un peu : <a href="/permanence-telephonique"><strong>Facilitelle prend tes appels</strong></a>.</p>
+        <button type="button" class="back" id="restart">Refaire le test</button>
+      </div>
+      <button type="button" class="back" id="prev" hidden>← Question précédente</button>
+    </form>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  var WEBHOOK='https://facilitelle.app.n8n.cloud/webhook/age-mjpm';
+  var form=document.getElementById('quiz'), steps=[].slice.call(form.querySelectorAll('.step-q'));
+  var bar=document.getElementById('bar'), prev=document.getElementById('prev');
+  var a={}, cur=0;
+  function show(i){
+    steps[cur].classList.remove('active'); cur=i; steps[cur].classList.add('active');
+    bar.style.width=Math.round(Math.min(i,6)/6*100)+'%';
+    prev.hidden=!(i>0 && i<7);
+    var f=steps[cur].querySelector('input:not([type=hidden]):not(#website)'); if(f && i<7) setTimeout(function(){f.focus()},50);
+  }
+  steps.forEach(function(s,i){
+    s.querySelectorAll('.choice').forEach(function(c){
+      c.addEventListener('click',function(){ a[s.dataset.name]=c.dataset.v; show(i+1); });
+    });
+  });
+  var ann=document.getElementById('annees');
+  function nextAnn(){ var v=parseInt(ann.value,10); if(!(v>=1)){ann.focus();return;} a.annees=Math.min(v,60); show(2); }
+  document.getElementById('next-annees').addEventListener('click',nextAnn);
+  ann.addEventListener('keydown',function(e){ if(e.key==='Enter'){e.preventDefault();nextAnn();} });
+  prev.addEventListener('click',function(){ show(Math.max(cur-1,0)); });
+  function calc(){
+    var age=a.annees*7+[0,4,8,12][a.crg]+[0,3,7,12][a.carte]+[0,5,10][a.vocaux]+[0,3,7,12][a.mails];
+    var g=function(f,h,n){return a.genre==='F'?f:a.genre==='H'?h:n;}, t, x;
+    if(age<30){t='Jeune pousse !';x='Profite, ça ne va pas durer.';}
+    else if(age<60){t=g('Encore fringante !','Encore fringant !','Encore en forme !');x='Mais tes CRG te regardent de travers.';}
+    else if(age<90){t=g('Ma vieille','Mon vieux','Mon ami·e')+', il serait temps de souffler un peu.';x='Un téléphone qui sonne moins, ça rajeunit.';}
+    else if(age<120){t='Centenaire en approche !';x='Le juge des tutelles commence à regarder ton dossier.';}
+    else {t='Tu as battu le record de Jeanne Calment.';x="On va devoir t'ouvrir une mesure.";}
+    return {age:age,titre:t,texte:x};
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=document.getElementById('email'), msg=document.getElementById('msg');
+    if(!email.checkValidity()||!email.value){ msg.textContent='Indique un email valide pour recevoir ton résultat.'; email.focus(); return; }
+    var r=calc();
+    var payload={email:email.value.trim(),genre:a.genre,annees:a.annees,crg:a.crg,carte:a.carte,vocaux:a.vocaux,mails:a.mails,
+      newsletter:document.getElementById('newsletter').checked,website:document.getElementById('website').value};
+    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+    document.getElementById('r-age').textContent=r.age+' ans';
+    document.getElementById('r-titre').textContent=r.titre;
+    document.getElementById('r-texte').textContent=r.texte;
+    var quiz='https://facilitelle.fr/age-mjpm', txt="J'ai "+r.age+" ans en années MJPM 😅 Et toi ? Fais le test : "+quiz, enc=encodeURIComponent;
+    document.getElementById('s-li').href='https://www.linkedin.com/feed/?shareActive=true&text='+enc(txt);
+    document.getElementById('s-fb').href='https://www.facebook.com/sharer/sharer.php?u='+enc(quiz);
+    document.getElementById('s-wa').href='https://wa.me/?text='+enc(txt);
+    show(7); bar.style.width='100%';
+  });
+  document.getElementById('restart').addEventListener('click',function(){ a={}; ann.value=''; show(0); });
+})();
+</script>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/" style="color:#fff"><img src="logo-mark-sm.png" alt="" width="30" height="42">FACILITELLE</a>
+        <p>Des solutions concrètes pour les MJPM, imaginées par un ancien mandataire. Organisme agréé Service à la Personne.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/permanence-telephonique">Permanence téléphonique</a></li>
+          <li><a href="/carte-de-paiement">Carte de paiement</a></li>
+          <li><a href="/petits-travaux">Débarras, livraison, bricolage</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+33749882032">07 49 88 20 32</a></li>
+          <li><a href="mailto:servicesmjpm@gmail.com">servicesmjpm@gmail.com</a></li>
+          <li><a href="https://calendly.com/servicesmjpm/solutions-permanences-telephoniques?back=1" target="_blank" rel="noopener">Rendez-vous gratuit</a></li>
+          <li><a href="https://www.linkedin.com/in/facilitelle-543509336/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.youtube.com/watch?v=x5mnMKOt6Go&amp;t=6s" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Facilitelle. Tous droits réservés.</span>
+      <a href="/mentions-legales">Mentions légales et confidentialité</a>
+    </div>
+  </div>
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>
