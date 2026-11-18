@@ -165,11 +165,13 @@
         <p>Ton âge en années MJPM arrive dans ta boîte mail.<br><strong>Ne stresse pas, ça va bien se passer.</strong> Enfin… on espère.</p>
         <p class="small">Rien reçu d'ici quelques minutes ? Regarde dans les spams.</p>
         <div style="font-weight:700;margin-top:1.4rem">En attendant, défie tes collègues</div>
+        <button type="button" id="s-native" class="btn btn-accent" hidden style="margin:1.2rem auto 0">📤 Partager mon test</button>
         <div class="share">
           <a id="s-li" style="background:#0a66c2" target="_blank" rel="noopener">LinkedIn</a>
           <a id="s-fb" style="background:#1877f2" target="_blank" rel="noopener">Facebook</a>
           <a id="s-wa" style="background:#25d366" target="_blank" rel="noopener">WhatsApp</a>
         </div>
+        <p id="s-copied" class="small" role="status" hidden>Texte copié ✅ Colle-le dans ton post.</p>
         <p>Pour rajeunir un peu : <a href="/permanence-telephonique"><strong>Facilitelle prend tes appels</strong></a>.</p>
         <button type="button" class="back" id="restart">Refaire le test</button>
       </div>
@@ -208,8 +210,14 @@
       newsletter:document.getElementById('newsletter').checked,website:document.getElementById('hp_zq7').value};
     fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
     var quiz='https://facilitelle.fr/age-mjpm', txt="Je viens de découvrir mon âge en années MJPM 😅 Et toi, tu as quel âge ? Fais le test : "+quiz, enc=encodeURIComponent;
-    document.getElementById('s-li').href='https://www.linkedin.com/feed/?shareActive=true&text='+enc(txt);
-    document.getElementById('s-fb').href='https://www.facebook.com/sharer/sharer.php?u='+enc(quiz);
+    var li=document.getElementById('s-li'), fb=document.getElementById('s-fb'), nat=document.getElementById('s-native'), cop=document.getElementById('s-copied');
+    li.href='https://www.linkedin.com/sharing/share-offsite/?url='+enc(quiz);
+    fb.href='https://www.facebook.com/sharer/sharer.php?u='+enc(quiz)+'&quote='+enc(txt);
+    // LinkedIn et Facebook ne reprennent pas le texte sur mobile : on le copie pour qu'il suffise de le coller
+    function copie(){ try{ navigator.clipboard.writeText(txt).then(function(){ cop.hidden=false; }); }catch(err){} }
+    li.onclick=copie; fb.onclick=copie;
+    // Sur téléphone : menu de partage du téléphone (LinkedIn, Facebook, Messenger, SMS, mail…)
+    if(navigator.share){ nat.hidden=false; nat.onclick=function(){ navigator.share({title:'Quel est ton âge en années MJPM ?',text:txt.replace(quiz,'').trim(),url:quiz}).catch(function(){}); }; }
     document.getElementById('s-wa').href='https://wa.me/?text='+enc(txt);
     show(8); bar.style.width='100%';
   });
