@@ -6,9 +6,9 @@
 <title>Quel est ton âge en années MJPM ? Le test | Facilitelle</title>
 <link rel="canonical" href="https://facilitelle.fr/age-mjpm">
 <script>if(/\.html$/.test(location.pathname))history.replaceState(null,'',location.pathname.replace(/(index)?\.html$/,'')+location.search+location.hash)</script>
-<meta name="description" content="1 an de MJPM = 7 ans de vie, comme les chats. Réponds à 6 questions et découvre ton âge en années MJPM. Test gratuit et 100 % humour.">
+<meta name="description" content="1 an de MJPM = 7 ans de vie, comme les chats. Réponds à 7 questions et découvre ton âge en années MJPM. Test gratuit et 100 % humour.">
 <meta property="og:title" content="Quel est ton âge en années MJPM ?">
-<meta property="og:description" content="1 an de MJPM = 7 ans de vie, comme les chats. Réponds à 6 questions et découvre ton âge en années MJPM. Test gratuit et 100 % humour.">
+<meta property="og:description" content="1 an de MJPM = 7 ans de vie, comme les chats. Réponds à 7 questions et découvre ton âge en années MJPM. Test gratuit et 100 % humour.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Facilitelle">
@@ -67,7 +67,7 @@
   <div class="container reveal">
     <span class="eyebrow">Le test 100 % humour</span>
     <h1>Quel est ton âge en années MJPM ?</h1>
-    <p class="lead">Chez les MJPM, c'est comme chez les chats : 1 an de métier = 7 ans de vie. Réponds à 6 questions et découvre ton vrai âge.</p>
+    <p class="lead">Chez les MJPM, c'est comme chez les chats : 1 an de métier = 7 ans de vie. Réponds à 7 questions et découvre ton vrai âge.</p>
   </div>
 </section>
 <section style="padding-top:1.5rem">
@@ -76,7 +76,7 @@
       <div class="progress" aria-hidden="true"><span id="bar"></span></div>
 
       <div class="step-q active" data-name="genre">
-        <div class="count">Question 1 sur 6</div>
+        <div class="count">Question 1 sur 7</div>
         <h2>Tu es…</h2>
         <div class="choices">
           <button type="button" class="choice" data-v="F">Une femme</button>
@@ -85,8 +85,18 @@
         </div>
       </div>
 
+      <div class="step-q" data-name="exercice">
+        <div class="count">Question 2 sur 7</div>
+        <h2>Ton QG, c'est plutôt…</h2>
+        <div class="choices">
+          <button type="button" class="choice" data-v="L">Mon salon (je suis en libéral)</button>
+          <button type="button" class="choice" data-v="S">L'asso ou le service (je suis salarié·e)</button>
+          <button type="button" class="choice" data-v="P">L'hôpital ou l'EHPAD (je suis préposé·e)</button>
+        </div>
+      </div>
+
       <div class="step-q" data-name="annees">
-        <div class="count">Question 2 sur 6</div>
+        <div class="count">Question 3 sur 7</div>
         <h2>Depuis combien d'années es-tu MJPM ?</h2>
         <input type="number" id="annees" min="1" max="60" inputmode="numeric" placeholder="Ex. : 8">
         <p class="small">Moins d'un an ? Mets 1, ça compte déjà.</p>
@@ -94,7 +104,7 @@
       </div>
 
       <div class="step-q" data-name="crg">
-        <div class="count">Question 3 sur 6</div>
+        <div class="count">Question 4 sur 7</div>
         <h2>Cette année, combien de semaines de retard sur tes CRG ?</h2>
         <div class="choices">
           <button type="button" class="choice" data-v="0">0, je suis à jour</button>
@@ -105,7 +115,7 @@
       </div>
 
       <div class="step-q" data-name="carte">
-        <div class="count">Question 4 sur 6</div>
+        <div class="count">Question 5 sur 7</div>
         <h2>Le mois dernier, combien de majeurs t'ont appelé pour une carte bloquée ?</h2>
         <div class="choices">
           <button type="button" class="choice" data-v="0">Aucun</button>
@@ -116,7 +126,7 @@
       </div>
 
       <div class="step-q" data-name="vocaux">
-        <div class="count">Question 5 sur 6</div>
+        <div class="count">Question 6 sur 7</div>
         <h2>En rentrant de congés, combien de messages vocaux ?</h2>
         <div class="choices">
           <button type="button" class="choice" data-v="0">Moins de 10</button>
@@ -127,7 +137,7 @@
       </div>
 
       <div class="step-q" data-name="mails">
-        <div class="count">Question 6 sur 6</div>
+        <div class="count">Question 7 sur 7</div>
         <h2>Si tu ouvres ta boîte mail maintenant, combien de mails non lus ?</h2>
         <div class="choices">
           <button type="button" class="choice" data-v="0">Zéro, je suis une machine</button>
@@ -176,9 +186,9 @@
   var a={}, cur=0;
   function show(i){
     steps[cur].classList.remove('active'); cur=i; steps[cur].classList.add('active');
-    bar.style.width=Math.round(Math.min(i,6)/6*100)+'%';
-    prev.hidden=!(i>0 && i<7);
-    var f=steps[cur].querySelector('input:not([type=hidden]):not(#website)'); if(f && i<7) setTimeout(function(){f.focus()},50);
+    bar.style.width=Math.round(Math.min(i,7)/7*100)+'%';
+    prev.hidden=!(i>0 && i<8);
+    var f=steps[cur].querySelector('input:not([type=hidden]):not(#website)'); if(f && i<8) setTimeout(function(){f.focus()},50);
   }
   steps.forEach(function(s,i){
     s.querySelectorAll('.choice').forEach(function(c){
@@ -186,7 +196,7 @@
     });
   });
   var ann=document.getElementById('annees');
-  function nextAnn(){ var v=parseInt(ann.value,10); if(!(v>=1)){ann.focus();return;} a.annees=Math.min(v,60); show(2); }
+  function nextAnn(){ var v=parseInt(ann.value,10); if(!(v>=1)){ann.focus();return;} a.annees=Math.min(v,60); show(3); }
   document.getElementById('next-annees').addEventListener('click',nextAnn);
   ann.addEventListener('keydown',function(e){ if(e.key==='Enter'){e.preventDefault();nextAnn();} });
   prev.addEventListener('click',function(){ show(Math.max(cur-1,0)); });
@@ -194,14 +204,14 @@
     e.preventDefault();
     var email=document.getElementById('email'), msg=document.getElementById('msg');
     if(!email.checkValidity()||!email.value){ msg.textContent='Indique un email valide pour recevoir ton résultat.'; email.focus(); return; }
-    var payload={email:email.value.trim(),genre:a.genre,annees:a.annees,crg:a.crg,carte:a.carte,vocaux:a.vocaux,mails:a.mails,
+    var payload={email:email.value.trim(),genre:a.genre,exercice:a.exercice,annees:a.annees,crg:a.crg,carte:a.carte,vocaux:a.vocaux,mails:a.mails,
       newsletter:document.getElementById('newsletter').checked,website:document.getElementById('website').value};
     fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
     var quiz='https://facilitelle.fr/age-mjpm', txt="Je viens de découvrir mon âge en années MJPM 😅 Et toi, tu as quel âge ? Fais le test : "+quiz, enc=encodeURIComponent;
     document.getElementById('s-li').href='https://www.linkedin.com/feed/?shareActive=true&text='+enc(txt);
     document.getElementById('s-fb').href='https://www.facebook.com/sharer/sharer.php?u='+enc(quiz);
     document.getElementById('s-wa').href='https://wa.me/?text='+enc(txt);
-    show(7); bar.style.width='100%';
+    show(8); bar.style.width='100%';
   });
   document.getElementById('restart').addEventListener('click',function(){ a={}; ann.value=''; show(0); });
 })();
