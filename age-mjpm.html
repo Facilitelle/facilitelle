@@ -121,7 +121,8 @@
         <div class="choices">
           <button type="button" class="choice" data-v="0">Moins de 10</button>
           <button type="button" class="choice" data-v="1">10 à 30</button>
-          <button type="button" class="choice" data-v="2">« Ma messagerie est pleine »</button>
+          <button type="button" class="choice" data-v="2">Plus de 30</button>
+          <button type="button" class="choice" data-v="3">« Ma messagerie est pleine »</button>
         </div>
       </div>
 
@@ -190,15 +191,37 @@
   document.getElementById('next-annees').addEventListener('click',nextAnn);
   ann.addEventListener('keydown',function(e){ if(e.key==='Enter'){e.preventDefault();nextAnn();} });
   prev.addEventListener('click',function(){ show(Math.max(cur-1,0)); });
+function resultat(age, genre){
+  var i = genre==='F'?0:genre==='H'?1:2;
+  var R = [
+    [150,['Fossile du métier','Fossile du métier','Fossile du métier'],"Les archéologues étudient tes classeurs. Appelle vite à l'aide."],
+    [120,['Record de Jeanne Calment battu !','Record de Jeanne Calment battu !','Record de Jeanne Calment battu !'],"On va devoir t'ouvrir une mesure."],
+    [110,['Légende vivante','Légende vivante','Légende vivante'],"Ton téléphone a sonné pendant que tu soufflais tes bougies."],
+    [100,['Centenaire officielle !','Centenaire officiel !','Cent bougies officielles !'],"Le maire va venir te remettre une médaille. Entre deux appels."],
+    [95,['Centenaire en approche !','Centenaire en approche !','Centenaire en approche !'],"Le juge des tutelles commence à regarder ton dossier."],
+    [90,['Nonagénaire du mandat','Nonagénaire du mandat','Nonagénaire du mandat'],"Ta pile de courrier a sa propre adresse postale."],
+    [85,['Pilier du tribunal','Pilier du tribunal','Pilier du tribunal'],"Le greffe te tutoie. Le juge aussi."],
+    [80,['Octogénaire en activité','Octogénaire en activité','Octogénaire en activité'],"Tu as connu les CRG sur papier carbone."],
+    [75,['Carte senior SNCF débloquée','Carte senior SNCF débloquée','Carte senior SNCF débloquée'],"Pratique pour les VAD à l'autre bout du département."],
+    [70,['Ma vieille !','Mon vieux !','Vieille branche !'],"Il serait temps de souffler un peu."],
+    [65,['Jeune retraitée… en théorie','Jeune retraité… en théorie','La retraite bien méritée… en théorie'],"En pratique, la banque t'appelle encore pour une carte bloquée."],
+    [60,['La retraite ? Quelle retraite ?','La retraite ? Quelle retraite ?','La retraite ? Quelle retraite ?'],"Ton inventaire de patrimoine t'a pris plus de temps que ta propre déclaration d'impôts."],
+    [55,['Bientôt senior','Bientôt senior','Bientôt senior'],"Tu commences à comprendre tes majeurs. Parfois un peu trop."],
+    [50,['Quinqua épuisée','Quinqua épuisé','Un demi-siècle de diligences'],"Ton dos dit stop. Ta messagerie dit « pleine »."],
+    [45,["Dans la force de l'âge","Dans la force de l'âge","Dans la force de l'âge"],"Tu connais par cœur le numéro de la CAF. Et la musique d'attente."],
+    [40,['Crise de la quarantaine','Crise de la quarantaine','Crise de la quarantaine'],"Tu rêves d'ouvrir une chambre d'hôtes. Sans téléphone."],
+    [35,['Encore fringante !','Encore fringant !','Encore en pleine forme !'],"Mais tes CRG commencent à te regarder de travers."],
+    [30,['Trentenaire rayonnante !','Trentenaire rayonnant !','Une trentaine rayonnante !'],"Tu dis encore « je rappelle demain » et tu le fais. Respect."],
+    [25,['Jeune pousse !','Jeune pousse !','Jeune pousse !'],"Ta première requête au juge t'a pris 3 jours. Maintenant, 3 minutes."],
+    [20,['Tout juste majeure !','Tout juste majeur !',"L'âge de la majorité !"],["Et pas encore protégée. Pourvu que ça dure.","Et pas encore protégé. Pourvu que ça dure.","Et toujours sans mesure de protection. Pourvu que ça dure."]],
+    [15,['Ado du mandat','Ado du mandat','Ado du mandat'],"Tu crois encore qu'on finit sa journée à 17 h. C'est mignon."],
+    [0,['Bébé MJPM !','Bébé MJPM !','Bébé MJPM !'],"Tu découvres encore le mot « curatelle renforcée ». Profite."]
+  ];
+  for (var k=0;k<R.length;k++){ if(age>=R[k][0]){ var p=R[k][2]; return {titre:R[k][1][i], texte: typeof p==='string'?p:p[i]}; } }
+}
   function calc(){
-    var age=a.annees*7+[0,4,8,12][a.crg]+[0,3,7,12][a.carte]+[0,5,10][a.vocaux]+[0,3,7,12][a.mails];
-    var g=function(f,h,n){return a.genre==='F'?f:a.genre==='H'?h:n;}, t, x;
-    if(age<30){t='Jeune pousse !';x='Profite, ça ne va pas durer.';}
-    else if(age<60){t=g('Encore fringante !','Encore fringant !','Encore en forme !');x='Mais tes CRG te regardent de travers.';}
-    else if(age<90){t=g('Ma vieille','Mon vieux','Mon ami·e')+', il serait temps de souffler un peu.';x='Un téléphone qui sonne moins, ça rajeunit.';}
-    else if(age<120){t='Centenaire en approche !';x='Le juge des tutelles commence à regarder ton dossier.';}
-    else {t='Tu as battu le record de Jeanne Calment.';x="On va devoir t'ouvrir une mesure.";}
-    return {age:age,titre:t,texte:x};
+    var age=a.annees*7+[0,4,8,12][a.crg]+[0,3,7,12][a.carte]+[0,4,8,12][a.vocaux]+[0,3,7,12][a.mails];
+    var r=resultat(age,a.genre); return {age:age,titre:r.titre,texte:r.texte};
   }
   form.addEventListener('submit',function(e){
     e.preventDefault();
