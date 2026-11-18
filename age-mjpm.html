@@ -152,7 +152,7 @@
         <p>Indique ton email : ton âge MJPM t'y attend.</p>
         <label for="email" class="small">Email</label>
         <input type="email" id="email" required autocomplete="email" placeholder="prenom@exemple.fr">
-        <input type="text" id="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+        <div style="display:none" aria-hidden="true"><input type="text" id="hp_zq7" name="hp_zq7" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore></div>
         <label class="consent"><input type="checkbox" id="newsletter"> <span>J'accepte de recevoir la newsletter Facilitelle. Elle est rare, promis : quelques mails par an, pas plus. Désinscription en un clic à tout moment.</span></label>
         <p class="small">Ton email sert à t'envoyer ton résultat. Il est conservé par Facilitelle et n'est jamais revendu. <a href="/mentions-legales">Mentions légales</a>.</p>
         <button type="submit" class="btn btn-accent">Recevoir mon âge MJPM</button>
@@ -188,7 +188,7 @@
     steps[cur].classList.remove('active'); cur=i; steps[cur].classList.add('active');
     bar.style.width=Math.round(Math.min(i,7)/7*100)+'%';
     prev.hidden=!(i>0 && i<8);
-    var f=steps[cur].querySelector('input:not([type=hidden]):not(#website)'); if(f && i<8) setTimeout(function(){f.focus()},50);
+    var f=steps[cur].querySelector('input:not([type=hidden]):not(#hp_zq7)'); if(f && i<8) setTimeout(function(){f.focus()},50);
   }
   steps.forEach(function(s,i){
     s.querySelectorAll('.choice').forEach(function(c){
@@ -205,7 +205,7 @@
     var email=document.getElementById('email'), msg=document.getElementById('msg');
     if(!email.checkValidity()||!email.value){ msg.textContent='Indique un email valide pour recevoir ton résultat.'; email.focus(); return; }
     var payload={email:email.value.trim(),genre:a.genre,exercice:a.exercice,annees:a.annees,crg:a.crg,carte:a.carte,vocaux:a.vocaux,mails:a.mails,
-      newsletter:document.getElementById('newsletter').checked,website:document.getElementById('website').value};
+      newsletter:document.getElementById('newsletter').checked,website:document.getElementById('hp_zq7').value};
     fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
     var quiz='https://facilitelle.fr/age-mjpm', txt="Je viens de découvrir mon âge en années MJPM 😅 Et toi, tu as quel âge ? Fais le test : "+quiz, enc=encodeURIComponent;
     document.getElementById('s-li').href='https://www.linkedin.com/feed/?shareActive=true&text='+enc(txt);
